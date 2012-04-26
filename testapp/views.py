@@ -44,9 +44,7 @@ def login_user(request):
             password = request.POST.get('password')
             user = User.objects.get(username=username)
             connection = user.check_password(password)
-    #        connection = pymongo.Connection('localhost',27017)
-    #        db = connection.sample
-    #        user = User.auth(username=username, password=password)
+    
             print user,'user'
             if connection:
                 user.backend = 'mongoengine.django.auth.MongoEngineBackend'
@@ -118,13 +116,10 @@ def index(request,contact=None):
 @login_required(login_url='/loginpage')
 def addpage(request):
 
-    #form=AdressForm()
     return render_to_response('add.html',context_instance=RequestContext(request))
     
 def addEntry(request):
    
-    
-    #fieldList=Adressbook.objects.all()
     form = Adressbook(firstname=request.POST['firstname'], 
                        Lastname=request.POST['Lastname'],
                        adress=request.POST['adress'],
@@ -225,15 +220,12 @@ def delete(request,contact=None):
     if contact is None:
         p = request.POST.get('firstname')
         p2 = Adressbook.objects.filter(firstname=p)  
-        #print ' got it'
         p2.delete()
         rcordlist=Adressbook.objects.all().order_by("firstname")   
         return render_to_response('display.html',{'rcordlist':rcordlist},
                                 context_instance=RequestContext(request))
                                 
     else:
-        #if contact.find('/'):
-        #    contact = contact.replace('/','')
         p = Adressbook.objects.filter(firstname=contact)    
         p.delete()
         return render_to_response('show.html',{'value':'Data deleted successfully.'},
@@ -249,7 +241,6 @@ def search(request):
 
     p = request.POST.get('firstname')
     p1 = Adressbook.objects.filter(firstname=p)
-    #print len(p1),'lennnnnnn'
     if len(p1) != 0:
         rcordlist = p1.values_list()
         return render_to_response('update.html',{'rcordlist':rcordlist,'contact':p},
