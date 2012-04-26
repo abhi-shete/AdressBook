@@ -205,26 +205,7 @@ def edit(request,contact=None):
                 print p2[record]
             i=i+1
           p2.save()       
-          
-          '''
-          
-          if request.POST['firstname']:
-              p2.firstname = request.POST['firstname']
-              
-          if request.POST['lastname']:
-              p2.Lastname = request.POST['lastname']
-              
-          if request.POST['adress']: 
-              p2.adress = request.POST['adress']
-              
-          if request.POST['phone_no']:
-              p2.phone_no = request.POST['phone_no']
-              
-          if request.POST['email']:
-              p2.email = request.POST['email']
-          
-          p2.save()
-          '''         
+                   
           rcordlist=Adressbook.objects.filter(firstname=request.POST['firstname'])
           return render_to_response('update.html',{'rcordlist':rcordlist,
                                                     'contact':request.POST['firstname']},
