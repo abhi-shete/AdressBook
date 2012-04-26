@@ -1,0 +1,19 @@
+<html>
+  <head><h1><font color="black"> Address Book </font></h1></head>
+  <body BGCOLOR="cc9933">
+    <p><font color="blue"><b> {{ value }} </b></font></p>
+    {% csrf_token %}
+    <ul>
+      <li>
+            <a href='/temp'><font color="black"> Home </font></a>
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+            <a href='/temp/display'> <font color="black"> Display Records </font></a>
+      </li>
+    </ul>
+    
+  </body>
+</html>

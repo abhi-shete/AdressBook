@@ -1,0 +1,25 @@
+<html>
+  <head><h1><font color="black"> Address Book </font></h1></head>
+  <body BGCOLOR="cc9933">
+    <p><font color="black"> Enter First name to delete entry. </font></p>
+
+    <form method="post" action=/temp/delete/>
+      {% csrf_token %}
+      <ul>
+          <lable name=firstname><font color="blue"><b> First Name </b></font></lable><tb />
+          <input type="text" name='firstname' placeholder="First Name" required>
+        
+      </ul>
+      
+      <input type="submit" value="Delete" />
+      
+    </form>
+
+    <ul>
+      <li>
+            <a href='/temp'><font color="black"> Home </font></a>
+      </li>
+    </ul>
+    
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<html>
+  <head> <h1><font color="black"> Adress Book </font></h1></head>
+
+  <body BGCOLOR="cc9933">
+    <h3>
+    <ul>
+      <li>
+            <a href="/temp/addpage">Add New Entry </a><br /><br />
+      </li>
+    </ul>
+    <ul>
+      <li>
+            <a href='/temp/display'>Display Records</a><br /><br />
+      </li>
+    </ul>
+    <!--ul>
+      <li>
+            <a href='/temp/deletepage'>Delete Data </a><br /><br />
+      </li>
+    </ul>
+    <ul>
+      <li>
+            <a href='/temp/editpage'>Edit Data </a><br /><br />
+      </li>
+    </ul-->
+    <ul>
+      <li>
+            <a href='/temp/searchpage'>Search Data </a>
+      </li>
+    </ul>
+    </h3>
+  </body>
+</html>

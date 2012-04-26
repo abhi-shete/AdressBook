@@ -1,0 +1,28 @@
+<html>
+  <head><h1><font color="black"> Address Book </font></h1></head>
+  <body BGCOLOR="cc9933">
+      <p><font color="black"> Add all details for creating New User </font></p>
+      <form method="post" action=/temp/adduser/>
+      {% csrf_token %}
+      <ul>
+          <lable name=username><font color="blue"><b> User Name </b></font></lable><tb />
+          <input type="text" name='username' placeholder="User Name" required>        
+      </ul>
+      
+      <ul>
+          <lable name=password> <font color="blue"><b> Password </b></font> </lable>
+          <input type="text" name="password" placeholder="Password" required>        
+      </ul>
+      
+      <ul>
+          <lable name=email> <font color="blue"><b> Email ID </b></font> </lable>
+          <input type="text" name="email" placeholder="Email ID" required>        
+      </ul>  
+      
+      <input type="submit" value="Save" />    
+      </form>
+      
+      
+  </body>
+</html>   
+        

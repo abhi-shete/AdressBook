@@ -1,0 +1,39 @@
+<html>
+  <head><h1><font color="black"> Address Book </font></h1></head>
+  <body BGCOLOR="cc9933">
+      <p><font color="black"> Add new Entry in the book </font></p>
+      <form method="post" action=/temp/add/>
+      {% csrf_token %}
+      <ul>
+          <lable name=firstname><font color="blue"><b> First Name </b></font></lable><tb />
+          <input type="text" name='firstname' placeholder="First Name" required>        
+      </ul>
+      
+      <ul>
+          <lable name=firstname> <font color="blue"><b> Last Name </b></font> </lable>
+          <input type="text" name='Lastname' placeholder="Last Name" >        
+      </ul>
+      
+      <ul>
+          <lable name=firstname> <font color="blue"><b> Address </b></font> </lable>
+          <textarea name="adress" rows=5 cols=50 >
+          </textarea>        
+      </ul>
+      
+      <ul>
+          <lable name=firstname> <font color="blue"><b> Phone No </b></font> </lable>
+          <input type="text" name="phone_no" placeholder="Phone Number" >        
+      </ul>
+      
+     <ul>
+          <lable name=firstname> <font color="blue"><b> Email ID </b></font> </lable>
+          <input type="text" name="email" placeholder="Email ID" >        
+      </ul>  
+      
+      <input type="submit" value="Save" />    
+      </form>
+      
+      
+  </body>
+</html>   
+        

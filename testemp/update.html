@@ -1,0 +1,47 @@
+<html>
+  <head><h1><font color="black"> Address Book </font></h1></head>
+  <body BGCOLOR="cc9933" TEXT="#0000FF" >
+    <h3><font color="black"> {{ contact }}'s Record </font></h3>
+    {% csrf_token %}
+    <table border=1>
+    <tr>
+    <td> First Name</td>
+    <td> Last Name </td>
+    <td> Adress </td>
+    <td> Phone No </td>
+    <td> Email </td>
+    </tr>
+    {% for record in rcordlist  %}
+    <tr>
+    <td> {{ record.firstname }} </td>
+    <td> {{ record.Lastname }} </td>
+    <td> {{ record.adress }} </td>
+    <td> {{ record.phone_no }} </td>
+    <td> {{ record.email }} </td>
+    </tr>
+    {% endfor %}
+    </table>
+    <br />
+    <form method="post" action=/temp/delete/{{ contact }}>
+      {% csrf_token %}
+      
+      <input type="submit" value="Delete" />
+      
+    </form>
+       
+    <form method="post" action=/temp/editpage/{{ contact }}>
+      {% csrf_token %}
+      
+      <input type="submit" value="Edit" />
+      
+    </form> 
+    
+    <ul>
+      <li>
+            <a href='/temp'><font color="black"> Home </font></a>
+      </li>
+    </ul>
+    
+    
+  </body>
+</html>

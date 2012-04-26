@@ -1,0 +1,41 @@
+<html>
+  <head><h1><font color="black"> Address Book </font></h1></head>
+  <body BGCOLOR="cc9933">
+      <p><font color="black"> Edit Record </font></p>
+      
+      <p> {% if errormsg %} {{ errormsg }} {% endif %} </p>
+      
+      <form method="post" action=/temp/edit/{{ contact }}>
+      {% csrf_token %}
+      <ul>
+          <lable name=firstname><font color="blue"><b> First Name </b></font></lable><tb />
+          <input type="text" name='firstname' value={{ p.firstname }} required>        
+      </ul>
+      
+      <ul>
+          <lable name=Lastname> <font color="blue"><b> Last Name </b></font> </lable>
+          <input type="text" name='lastname' value={{ p.Lastname }} >        
+      </ul>
+      
+      <ul>
+          <lable name=Adress> <font color="blue"><b> Address </b></font> </lable>
+          <textarea name="adress" rows=5 cols=50 >{{ p.adress }}
+          </textarea>        
+      </ul>
+      
+      <ul>
+          <lable name=phone_no> <font color="blue"><b> Phone No </b></font> </lable>
+          <input type="text" name="phone_no" value={{ p.phone_no }} >        
+      </ul>
+      
+     <ul>
+          <lable name=email> <font color="blue"><b> Email ID </b></font> </lable>
+          <input type="text" name="email" value={{ p.email }} >        
+      </ul>  
+      
+      <input type="submit" value="Edit" />    
+      </form>
+      
+      
+  </body>
+</html>   
