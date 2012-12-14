@@ -5,7 +5,7 @@ from django.http import Http404
 from django.template import RequestContext
 from django.shortcuts import get_object_or_404, render_to_response
 from django.core.urlresolvers import reverse 
-from testapp.models import Adressbook
+from testapp.models import PhoneBook
 from django.contrib.auth import authenticate, login, logout, REDIRECT_FIELD_NAME
 import pymongo
 from mongoengine.django.auth import User
@@ -120,7 +120,7 @@ def addpage(request):
     
 def addEntry(request):
    
-    form = Adressbook(firstname=request.POST['firstname'], 
+    form = PhoneBook(firstname=request.POST['firstname'], 
                        Lastname=request.POST['Lastname'],
                        adress=request.POST['adress'],
                        phone_no=request.POST['phone_no'],  
@@ -132,18 +132,18 @@ def addEntry(request):
 @login_required(login_url='/loginpage')    
 def display(request, contact=None):
     if contact is None:
-        rcordlist=Adressbook.objects.all().order_by("firstname")
+        rcordlist=PhoneBook.objects.all().order_by("firstname")
         return render_to_response('display.html',{'rcordlist':rcordlist},
                         context_instance=RequestContext(request))
     else:
-        rcordlist=Adressbook.objects.filter(firstname=contact)
+        rcordlist=PhoneBook.objects.filter(firstname=contact)
         return render_to_response('display.html',{'rcordlist':rcordlist},
                         context_instance=RequestContext(request))
 @is_staff(login_url='/staff')        
 @login_required(login_url='/loginpage')
 def update(request, contact=None):     
     
-    rcordlist=Adressbook.objects.filter(firstname=contact)
+    rcordlist=PhoneBook.objects.filter(firstname=contact)
    
     return render_to_response('update.html',{'rcordlist':rcordlist,
                                             'contact':contact},
@@ -167,7 +167,7 @@ def editpage(request,contact=None):
     if contact is None:
         return render_to_response('edit.html',context_instance=RequestContext(request))     
     else:
-        p=Adressbook.objects.filter(firstname=contact)
+        p=PhoneBook.objects.filter(firstname=contact)
         p=p[0]
         return render_to_response('edit.html',{'p':p,'contact':contact},
                                   context_instance=RequestContext(request)) 
@@ -176,7 +176,7 @@ def editpage(request,contact=None):
 def edit(request,contact=None):
     
     #print contact    
-    p1 = Adressbook.objects.filter(firstname=contact)
+    p1 = PhoneBook.objects.filter(firstname=contact)
     rlist = ['firstname','Lastname','adress','phone_no','email']
     
     if len(p1) != 0:
@@ -201,7 +201,7 @@ def edit(request,contact=None):
             i=i+1
           p2.save()       
                    
-          rcordlist=Adressbook.objects.filter(firstname=request.POST['firstname'])
+          rcordlist=PhoneBook.objects.filter(firstname=request.POST['firstname'])
           return render_to_response('update.html',{'rcordlist':rcordlist,
                                                     'contact':request.POST['firstname']},
                                                 context_instance=RequestContext(request))
@@ -219,14 +219,14 @@ def delete(request,contact=None):
     
     if contact is None:
         p = request.POST.get('firstname')
-        p2 = Adressbook.objects.filter(firstname=p)  
+        p2 = PhoneBook.objects.filter(firstname=p)  
         p2.delete()
-        rcordlist=Adressbook.objects.all().order_by("firstname")   
+        rcordlist=PhoneBook.objects.all().order_by("firstname")   
         return render_to_response('display.html',{'rcordlist':rcordlist},
                                 context_instance=RequestContext(request))
                                 
     else:
-        p = Adressbook.objects.filter(firstname=contact)    
+        p = PhoneBook.objects.filter(firstname=contact)    
         p.delete()
         return render_to_response('show.html',{'value':'Data deleted successfully.'},
                                 context_instance=RequestContext(request))   
@@ -240,7 +240,7 @@ def searchpage(request):
 def search(request):
 
     p = request.POST.get('firstname')
-    p1 = Adressbook.objects.filter(firstname=p)
+    p1 = PhoneBook.objects.filter(firstname=p)
     if len(p1) != 0:
         rcordlist = p1.values_list()
         return render_to_response('update.html',{'rcordlist':rcordlist,'contact':p},

@@ -3,7 +3,7 @@ from django.db import models
 from mongoengine import *
 import datetime
 
-class Adressbook(Document):
+class PhoneBook(Document):
     firstname = StringField(max_length=200)
     Lastname = StringField(max_length=200)
     adress  = StringField(max_length=100)
